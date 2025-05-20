@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <h1>Test</h1>
+    <section>
+        {% if app.user %}
+            <h2>Bonjour {{ app.user.alias }}</h2>
+
+            {% for note in notes %}
+                    <div>
+                        <h3>{{ note.titre }}</h3>
+                        <p>{{ note.content }}</p>
+                        <p>Créé le {{ note.createdAt|date('d/m/Y') }}</p>
+                        {% if note.modifiedAt != note.createdAt %}
+                            <p>Modifié le {{ note.modifiedAt|date('d/m/Y') }}</p>
+                        {% endif %}
+                        {% for tag in note.tags %}
+                            {# {% if note.id == tag.note.id %}  #}
+                                <span class="tag">{{ tag.label }}</span>
+                            {# {% endif %} #}
+                        {% endfor %}
+                        <ul>
+                            <li><a href=""><i class="fa-solid fa-pen"></i> Modifier</a></li>
+                            <li><a href=""><i class="fa-solid fa-magnifying-glass"></i> Voir Plus </a></li>
+                            <li><a href=""><i class="fa-solid fa-xmark"></i> Delete</a></li>
+                        </ul>
+                    </div>
+                {% endfor %}
+        
+        {% endif %}
+    </section>
+{% endblock %}

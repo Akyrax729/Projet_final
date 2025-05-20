@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une note{% endblock %}
+
+{% block body %}
+    <section id="form">
+        {{form_start(noteform)}}
+            <h2>Création de post-it</h2>
+            {{form_widget(noteform)}}
+            <button>Créer</button>
+        {{form_end(noteform)}}
+    </section>
+{% endblock %}
