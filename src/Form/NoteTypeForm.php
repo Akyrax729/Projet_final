@@ -40,7 +40,7 @@ class NoteTypeForm extends AbstractType
                     'placeholder' => 'Date de fin',
                 ]
             ])
-            ->add('tags', EntityType::class, [
+            ->add('tag', EntityType::class, [
                 'class' => Tag::class,
                 'choice_label' => 'label',
                 'label' => 'Tags',

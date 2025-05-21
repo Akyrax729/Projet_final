@@ -22,12 +22,6 @@ class Note
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $titre = null;
 
-    /**
-     * @var Collection<int, Tag>
-     */
-    #[ORM\ManyToMany(targetEntity: Tag::class, mappedBy: 'note')]
-    private Collection $tags;
-
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
@@ -46,10 +40,17 @@ class Note
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'note')]
     private Collection $users;
 
+    /**
+     * @var Collection<int, Tag>
+     */
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'notes')]
+    private Collection $Tag;
+
+
     public function __construct()
     {
-        $this->tags = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->Tag = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,33 +78,6 @@ class Note
     public function setTitre(string $titre): static
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Tag>
-     */
-    public function getTags(): Collection
-    {
-        return $this->tags;
-    }
-
-    public function addTag(Tag $tag): static
-    {
-        if (!$this->tags->contains($tag)) {
-            $this->tags->add($tag);
-            $tag->addNote($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTag(Tag $tag): static
-    {
-        if ($this->tags->removeElement($tag)) {
-            $tag->removeNote($this);
-        }
 
         return $this;
     }
@@ -179,6 +153,30 @@ class Note
         if ($this->users->removeElement($user)) {
             $user->removeNote($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function getTag(): Collection
+    {
+        return $this->Tag;
+    }
+
+    public function addTag(Tag $tag): static
+    {
+        if (!$this->Tag->contains($tag)) {
+            $this->Tag->add($tag);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): static
+    {
+        $this->Tag->removeElement($tag);
 
         return $this;
     }

@@ -39,6 +39,14 @@ final class NoteController extends AbstractController
         ]);
     }
 
+        #[Route('/note/{id}/read', name: 'app_note_read')]
+        public function read(Note $note): Response
+        {   
+
+            return $this->render('note/_read.html.twig', [
+                'note'=>$note,
+            ]);
+        }
 
     #[Route('/{id}/edit', name: 'app_note_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Note $note, EntityManagerInterface $entityManager): Response
@@ -63,5 +71,21 @@ final class NoteController extends AbstractController
             'note' => $note,
             'noteform' => $form,
         ]);
+    }
+
+    #[Route('/note/{id}/delete', name: 'app_note_delete')]
+    public function delete(Note $note, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        
+        if($this->isCsrfTokenValid("COUCOU". $note->getId(), $request->get('_token'))){
+            $entityManager->remove($note);
+            $entityManager->flush();
+            $this->addFlash("success","La suppression a été effectuée");
+            return $this->redirectToRoute("app_index");
+        }
+
+        $this->addFlash("error", "Token invalide, suppression annulée.");
+        return $this->redirectToRoute("app_index");
+
     }
 }
