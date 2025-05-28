@@ -21,9 +21,9 @@ final class IndexController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-    
-
         $notes = $noteRepository->userFilter($user);
+        // dd($color);
+
         return $this->render('index/index.html.twig', [
             'notes' => $notes,
         ]);

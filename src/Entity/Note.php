@@ -25,12 +25,6 @@ class Note
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTime $date_debut = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTime $date_fin = null;
-
     #[ORM\Column]
     private ?\DateTimeImmutable $modifiedAt = null;
 
@@ -46,6 +40,14 @@ class Note
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'notes')]
     private Collection $Tag;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTime $datedebut = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTime $datefin = null;
+
+    #[ORM\ManyToOne(inversedBy: 'notes')]
+    private ?Color $color = null;
 
     public function __construct()
     {
@@ -90,30 +92,6 @@ class Note
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getDateDebut(): ?\DateTime
-    {
-        return $this->date_debut;
-    }
-
-    public function setDateDebut(\DateTime $date_debut): static
-    {
-        $this->date_debut = $date_debut;
-
-        return $this;
-    }
-
-    public function getDateFin(): ?\DateTime
-    {
-        return $this->date_fin;
-    }
-
-    public function setDateFin(?\DateTime $date_fin): static
-    {
-        $this->date_fin = $date_fin;
 
         return $this;
     }
@@ -180,4 +158,41 @@ class Note
 
         return $this;
     }
+
+    public function getDatedebut(): ?\DateTime
+    {
+        return $this->datedebut;
+    }
+
+    public function setDatedebut(?\DateTime $datedebut): static
+    {
+        $this->datedebut = $datedebut;
+
+        return $this;
+    }
+
+    public function getDatefin(): ?\DateTime
+    {
+        return $this->datefin;
+    }
+
+    public function setDatefin(?\DateTime $datefin): static
+    {
+        $this->datefin = $datefin;
+
+        return $this;
+    }
+
+    public function getColor(): ?Color
+    {
+        return $this->color;
+    }
+
+    public function setColor(?Color $color): static
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
 }

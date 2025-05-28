@@ -19,15 +19,19 @@
                 <nav>
                     <ul>
                         <li><a href="{{path('app_index')}}">Accueil</a></li>
-                        <li><a href="{{path('app_login')}}">Login</a></li>
-                        <li><a href="{{path('app_register')}}">Register</a></li>
-                        <li><a href="{{path('app_logout')}}">Logout</a></li>
-                        <li><a href="{{path('app_admin')}}">Admin</a></li>
                         <li><a href="{{path('app_addnote')}}">Ajouter une note</a></li>
+                        {% if app.user %}
+                            <li><a href="{{path('app_logout')}}">Logout</a></li>  
+                        {% else %}
+                            <li><a href="{{path('app_login')}}">Login</a></li>
+                            <li><a href="{{path('app_register')}}">Register</a></li>
+                        {% endif %}
+                        <button type="button" data-theme-toggle aria-label="Light Theme">Light theme</button>
+                        
                     </ul>
                 </nav>
             </header>
-        {% endblock %}
+        {% endblock %} 
 
         {% block body %}
         

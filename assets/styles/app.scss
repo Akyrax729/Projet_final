@@ -1,3 +1,6 @@
-body {
-    background-color: skyblue;
-}
+@use "base/reset";
+@use "base/general";
+@use "abstract/variables";
+@use "abstract/mixins";
+@use "layout/notes";
+@use "layout/form";

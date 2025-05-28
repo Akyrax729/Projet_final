@@ -4,12 +4,15 @@ namespace App\Form;
 
 use Dom\Entity;
 use App\Entity\Tag;
+use App\Entity\Color;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class NoteTypeForm extends AbstractType
 {
@@ -17,7 +20,7 @@ class NoteTypeForm extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [
-                'label' => 'Titre',
+                'label' => 'Titre *',
                 'attr' => [
                     'placeholder' => 'Titre de la note',
                 ]
@@ -28,17 +31,23 @@ class NoteTypeForm extends AbstractType
                     'placeholder' => 'Contenu de la note',
                 ]
             ])
-            ->add('date_debut', DateType::class, [
+            ->add('datedebut', DateType::class, [
                 'label' => 'Date de début',
                 'attr' => [
                     'placeholder' => 'Date de début',
-                ]
+                ],
+                'widget' => 'single_text',
+                'empty_data' => "",
+                'required' => false,
             ])
-            ->add('date_fin', DateType::class, [
+            ->add('datefin', DateType::class, [
                 'label' => 'Date de fin',
                 'attr' => [
                     'placeholder' => 'Date de fin',
-                ]
+                ],
+                'widget' => 'single_text',
+                'empty_data' => "",
+                'required' => false,
             ])
             ->add('tag', EntityType::class, [
                 'class' => Tag::class,
@@ -47,6 +56,13 @@ class NoteTypeForm extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
+            ->add('color',EntityType::class, [
+                'class' => Color::class,
+                'choice_label' => 'label',
+                'label' => 'Couleur *',
+                'placeholder' => 'Sélectionnez une couleur',
+                'required' => true,
+            ])  
         ;
     }
 

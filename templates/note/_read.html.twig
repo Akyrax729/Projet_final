@@ -7,13 +7,17 @@
     <p> {{ note.datedebut|date('d/m/Y') }} </p>
     <p> {{ note.datefin|date('d/m/Y') }} </p>
 
-    {% for tag in note.tag %}
-        <span class="tag">{{ tag.label }}</span>
-    {% endfor %}
+    <div class="tags">
+        {% for tag in note.tag %}
+                <div>
+                    <span class="tag">{{ tag.label }}<span class="triangle"></span></span>
+                </div>
+        {% endfor %}
+    </div>
 
-    <p> Créé le {{ note.createdAt|date('d/m/Y') }} </p>
+    <p> Créé le {{ note.createdAt|date('d/m/Y h:i') }} </p>
     {% if note.modifiedAt != note.createdAt %}
-        <p> Modifié le {{ note.modifiedAt|date('d/m/Y') }} </p>
+        <p> Dernière modification le {{ note.modifiedAt|date('d/m/Y h:i') }} </p>
     {% endif %}
 
     <ul>

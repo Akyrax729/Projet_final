@@ -1,0 +1,67 @@
+@use "../abstract/mixins" as mixin;
+@use "../abstract/variables" as var;
+
+// CSS Notes Index
+#note {
+
+    #notebloc {
+
+        @include mixin.flex($wrap: wrap);
+
+        .notebody {
+            @include mixin.flex(column, $wrap: wrap);
+            width: 300px;
+            min-height: 250px;
+            padding: 10px;
+            margin: 15px;
+
+    }
+
+        .action {
+            margin-top: 5px;
+
+            li {
+                @include mixin.flex();
+                padding: 5px;
+                
+            }
+        }
+    }
+}
+
+// CSS Tags Index / Read 
+.tags {
+    @include mixin.flex($wrap: wrap);
+
+    margin: 10px 0;
+
+    div {
+
+        .tag {
+            display: block;
+            position: relative;
+            padding: 2px;
+            padding-left: 4px;
+            margin: 5px 0;
+            margin-right: 20px;
+            
+            background-color: darkslategrey;
+            color : white;
+            
+
+        }
+        .triangle{
+            position: absolute;
+            top: -5px;
+            right: -11px;
+            display : inline-block;
+            margin-top: 5px;
+            height : 0;
+            width : 0;
+            border-top : 11px solid transparent;
+            border-bottom : 11px solid transparent;
+            border-left : 11px solid darkslategray;
+        }
+
+    }
+}

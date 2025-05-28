@@ -1,35 +1,43 @@
 {% extends 'base.html.twig' %}
 
+
+
+
+
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
     <h1>Test</h1>
-    <section>
+    <section id="note">
         {% if app.user %}
             <h2>Bonjour {{ app.user.alias }}</h2>
-
+            <div id="notebloc">
             {% for note in notes %}
-                    <div>
-                        <h3>{{ note.titre }}</h3>
-                        <p>{{ note.content }}</p>
-                        {% if note.modifiedAt != note.createdAt %}
-                            <p>Dernière modification {{ note.modifiedAt|date('d/m/Y') }}</p>
-                        {% else %}
-                            <p>Créé le {{ note.createdAt|date('d/m/Y') }}</p>
-                        {% endif %}
+                    <div class="notebody {{ note.color.label }} ">
+
+                        <div>
+                            <h3>{{ note.titre }}</h3>
+                            <p>{{ note.content }}</p>
+                            {% if note.datedebut != null %}
+                                <p>Date de début {{ note.datedebut|date('d/m/Y') }}</p>
+                            {% endif %}
+                        </div>
                 
-                        {% for tag in note.tag %}
-                                <span class="tag">{{ tag.label }}</span>
-                        {% endfor %}
-                        <ul>
+                        <div class="tags">
+                            {% for tag in note.tag %}
+                                    <div>
+                                        <span class="tag">{{ tag.label }}<span class="triangle"></span></span>
+                                    </div>
+                            {% endfor %}
+                        </div>
+                        <ul class="action">
                             <li><a href="{{ path('app_note_edit', {'id': note.id}) }}"><i class="fa-solid fa-pen"></i> Modifier</a></li>
                             <li><a href="{{ path('app_note_read', {'id': note.id})}}"><i class="fa-solid fa-magnifying-glass"></i> Voir Plus </a></li>
                             <li> {{ include('note/_deleteform.html.twig') }}</li>
-                            
                         </ul>
                     </div>
                 {% endfor %}
-        
+            </div>
         {% endif %}
     </section>
 {% endblock %}
