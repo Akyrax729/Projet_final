@@ -45,7 +45,7 @@ final class NoteController extends AbstractController
         public function read(Note $note): Response
         {   
 
-            return $this->render('note/_read.html.twig', [
+            return $this->render('note/read.html.twig', [
                 'note'=>$note,
             ]);
         }

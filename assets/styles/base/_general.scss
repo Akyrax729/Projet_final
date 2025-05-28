@@ -60,13 +60,18 @@ body {
   }
 
   // Tous les boutons
-  button {
+  button, .action li a {
     @include mixin.hover(var(--button-color));
-    margin: 2rem 0;
+    margin: 5px 0;
     padding: 0.3rem 1rem;
+    border: black solid 1px;
     border-radius: 20px;
     color: inherit;
     background-color: var(--buttonbg-color);
     cursor: pointer;
+  }
+
+  .action li svg {
+    font-size: 12px;
   }
 }
