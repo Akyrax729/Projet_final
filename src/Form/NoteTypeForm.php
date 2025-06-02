@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class NoteTypeForm extends AbstractType
 {
@@ -25,8 +26,8 @@ class NoteTypeForm extends AbstractType
                     'placeholder' => 'Titre de la note',
                 ]
             ])
-            ->add('content', TextType::class, [
-                'label' => 'Contenu *',
+            ->add('content', TextareaType::class, [
+                'label' => 'Contenu',
                 'attr' => [
                     'placeholder' => 'Contenu de la note',
                 ]

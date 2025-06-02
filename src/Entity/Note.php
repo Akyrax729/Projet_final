@@ -16,9 +16,6 @@ class Note
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $content = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $titre = null;
 
@@ -49,6 +46,9 @@ class Note
     #[ORM\ManyToOne(inversedBy: 'notes')]
     private ?Color $color = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $content = null;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -58,18 +58,6 @@ class Note
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent(?string $content): static
-    {
-        $this->content = $content;
-
-        return $this;
     }
 
     public function getTitre(): ?string
@@ -191,6 +179,18 @@ class Note
     public function setColor(?Color $color): static
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(?string $content): static
+    {
+        $this->content = $content;
 
         return $this;
     }

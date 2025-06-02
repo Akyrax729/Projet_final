@@ -1,0 +1,55 @@
+@use "../abstract/mixins" as mixin;
+@use "../abstract/variables" as var;
+
+#form {
+    @include mixin.flex(column, $wrap: wrap);
+    margin: 0 5%;
+
+    form {
+        @include mixin.flex(column, $wrap: wrap);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #note_type_form {
+        width: 100%;
+        margin-bottom: 20px;
+
+        div {
+            @include mixin.flex(column, $wrap: wrap);
+
+            #note_type_form_tag {
+                @include mixin.flex(row, $wrap: wrap);
+
+                label {
+                    margin: 0px 5px;
+                    margin-right: 10px;
+                }
+
+                input {
+                    width: 10px;
+                }
+
+            }
+
+            textarea {
+                height: 100px;
+                padding: 3px;
+                resize: none;
+            }
+        }
+
+        label {
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 200px;
+        }
+    }
+}

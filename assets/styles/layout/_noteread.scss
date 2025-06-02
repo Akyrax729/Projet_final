@@ -1,0 +1,33 @@
+@use "../abstract/mixins" as mixin;
+@use "../abstract/variables" as var;
+
+#read {
+    @include mixin.flex(column, $wrap: wrap);
+    margin: 0 5%;
+
+    h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .datedebut {
+        margin-bottom: 5px;
+        font-weight: 700;
+    }
+
+    p {
+        font-size: 16px;
+        text-align: justify;
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+
+    .action{    
+        @include mixin.flex(row, $wrap: nowrap);
+
+        li {
+            margin: 0 10px;
+
+        }
+    }
+}
