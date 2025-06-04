@@ -1,0 +1,30 @@
+/* The Modal (background) */
+#modal {
+  display: none; /* Hidden by default */
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Sit on top */
+//   padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  height: 70%;
+  width: 70%;
+  padding: 60px;;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 20px;
+  font-size: 50px;
+  cursor: pointer;
+}

@@ -3,7 +3,11 @@
 
 #read {
     @include mixin.flex(column, $wrap: wrap);
-    margin: 0 5%;
+    margin: 25px 5%;
+
+    .notebody {
+        padding: 15px;
+    }
 
     h2 {
         font-size: 30px;

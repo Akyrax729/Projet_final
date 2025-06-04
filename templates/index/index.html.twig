@@ -20,7 +20,7 @@
                                 {% if note.datedebut != null %}
                                     <p class="datedebut">Date de début : {{ note.datedebut|date('d/m/Y') }}</p>
                                 {% endif %}
-                                <p>{{ note.content|slice(0, 200)~' ...' }}</p>
+                                <p>{{ note.content|slice(0, 200)}}</p>
                                 
                             </div>
                     
@@ -42,6 +42,15 @@
                     {% endfor %}
                 </div>
             {% endif %}
+            <button id="plus" class="plus">Plus</button>
+
         </section>
     </main>
+
+    <div id="modal">
+        <div class="modal">
+            <span class="close">&times;</span>
+            {% include 'note/read.html.twig' %}
+        </div>
+    </div>
 {% endblock %}

@@ -29,6 +29,11 @@ body {
   color: var(--text-color);
   border: var(--border-color);
 
+  #logo {
+    font-size: 32px;
+    color: var(--text-color);
+  }
+
   header {
     background-color: var(--header-background-color);
     padding: 1rem 0;
@@ -63,6 +68,7 @@ body {
   button, .action li a {
     @include mixin.hover(var(--button-color));
     margin: 5px 0;
+    margin-top: 15px;
     padding: 0.3rem 1rem;
     border: black solid 1px;
     border-radius: 20px;

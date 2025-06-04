@@ -3,32 +3,34 @@
 {% block body %}
 <main>
     <section id="read">
-        <h2> {{ note.titre }} </h2>
-        <p> {{ note.content }} </p>
-        
+        <div class="notebody {{ note.color.label }} ">
+            <h2> {{ note.titre }} </h2>
+            <p> {{ note.content }} </p>
+            
 
-        <div class="tags">
-            {% for tag in note.tag %}
-                    <div>
-                        <span class="tag">{{ tag.label }}<span class="triangle"></span></span>
-                    </div>
-            {% endfor %}
+            <div class="tags">
+                {% for tag in note.tag %}
+                        <div>
+                            <span class="tag">{{ tag.label }}<span class="triangle"></span></span>
+                        </div>
+                {% endfor %}
+            </div>
+
+        <div id="date">
+                <p>Date de début : {{ note.datedebut|date('d/m/Y') }} </p>
+                <p>Date de fin : {{ note.datefin|date('d/m/Y') }} </p>
+                <p> Créé le {{ note.createdAt|date('d/m/Y h:i') }} </p>
+                {% if note.modifiedAt != note.createdAt %}
+                    <p> Dernière modification le {{ note.modifiedAt|date('d/m/Y h:i') }} </p>
+                {% endif %}
         </div>
 
-    <div id="date">
-            <p>Date de début : {{ note.datedebut|date('d/m/Y') }} </p>
-            <p>Date de fin : {{ note.datefin|date('d/m/Y') }} </p>
-            <p> Créé le {{ note.createdAt|date('d/m/Y h:i') }} </p>
-            {% if note.modifiedAt != note.createdAt %}
-                <p> Dernière modification le {{ note.modifiedAt|date('d/m/Y h:i') }} </p>
-            {% endif %}
-    </div>
-
-        <ul class="action">
-            <li><a href="{{ path('app_index') }}"><i class="fa-solid fa-arrow-left"></i><span> Retour</span></a></li>
-            <li><a href="{{ path('app_note_edit', {'id': note.id}) }}"><i class="fa-solid fa-pen"></i><span> Modifier</span></a></li>
-            <li> {{ include('note/deleteform.html.twig') }} </li>
-        </ul>
+            <ul class="action">
+                <li><a href="{{ path('app_index') }}"><i class="fa-solid fa-arrow-left"></i><span> Retour</span></a></li>
+                <li><a href="{{ path('app_note_edit', {'id': note.id}) }}"><i class="fa-solid fa-pen"></i><span> Modifier</span></a></li>
+                <li> {{ include('note/deleteform.html.twig') }} </li>
+            </ul>
+        </div>
     </section>
 </main>
 

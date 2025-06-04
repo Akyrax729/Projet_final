@@ -14,11 +14,6 @@ import { Controller } from '@hotwired/stimulus';
 //         this.element.textContent = 'Hello Stimulus! Edit me in assets/controllers/hello_controller.js';
 //     }
 // }
-// export default class extends Controller {
-//     modal = null;
 
-//     connect() {
-//         this.modal = Modal.getOrCreateInstance(this.element);
-//         document.addEventListener('modal:close', () => this.modal.hide());
-//     }
-// }
+
+

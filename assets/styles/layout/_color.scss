@@ -1,29 +1,28 @@
 @use "../abstract/mixins" as mixin;
 @use "../abstract/variables" as var;
 
-#notebloc {
-    .Bleu {
-        background-color: #94bef9;
-        color: black;
-        }
 
-    .Violet {
-        background-color: #A1A0CF;
-        color: black;
-        }
-
-    .Vert {
-        background-color: #A1CFB0;
-        color: black;
-        }
-
-    .Rouge {
-        background-color: #cfa1a1;
-        color: black;
+.Bleu {
+    background-color: #94bef9;
+    color: black;
     }
 
-    .Jaune {
-        background-color: #f5e89f;
-        color: black;
+.Violet {
+    background-color: #A1A0CF;
+    color: black;
     }
+
+.Vert {
+    background-color: #A1CFB0;
+    color: black;
+    }
+
+.Rouge {
+    background-color: #cfa1a1;
+    color: black;
+}
+
+.Jaune {
+    background-color: #f5e89f;
+    color: black;
 }
