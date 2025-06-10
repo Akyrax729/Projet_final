@@ -108,3 +108,22 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+// AJAX
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   const filterBtn = document.querySelector('.filter-btn');
+//   const resultContainer = document.querySelector('.result-container');
+
+//   filterBtn.addEventListener('click', function() {
+//     fetch('filter-page?filterGetValue=${filterBtn}', {
+//       method: 'GET',
+//       headers: {'X-Requested-With': 'HMLHttpRequest'}
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//       resultContainer.innerHTML = data.html;
+//     })
+//     .catch(error => console.error('Error:', error));
+//   });
+// });

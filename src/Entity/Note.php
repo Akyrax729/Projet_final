@@ -31,12 +31,6 @@ class Note
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'note')]
     private Collection $users;
 
-    /**
-     * @var Collection<int, Tag>
-     */
-    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'notes')]
-    private Collection $Tag;
-
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $datedebut = null;
 
@@ -49,10 +43,16 @@ class Note
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
 
+    /**
+     * @var Collection<int, Tag>
+     */
+    #[ORM\ManyToMany(targetEntity: Tag::class, mappedBy: 'note')]
+    private Collection $tags;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
-        $this->Tag = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,30 +123,6 @@ class Note
         return $this;
     }
 
-    /**
-     * @return Collection<int, Tag>
-     */
-    public function getTag(): Collection
-    {
-        return $this->Tag;
-    }
-
-    public function addTag(Tag $tag): static
-    {
-        if (!$this->Tag->contains($tag)) {
-            $this->Tag->add($tag);
-        }
-
-        return $this;
-    }
-
-    public function removeTag(Tag $tag): static
-    {
-        $this->Tag->removeElement($tag);
-
-        return $this;
-    }
-
     public function getDatedebut(): ?\DateTime
     {
         return $this->datedebut;
@@ -195,4 +171,30 @@ class Note
         return $this;
     }
 
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): static
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags->add($tag);
+            $tag->addNote($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): static
+    {
+        if ($this->tags->removeElement($tag)) {
+            $tag->removeNote($this);
+        }
+
+        return $this;
+    }
 }
