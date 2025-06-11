@@ -24,6 +24,7 @@
 }
 
 
+
 body {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -42,6 +43,14 @@ body {
   main {
     min-height: 80vh;
 
+  }
+
+  footer {
+    @include mixin.flex($wrap: wrap);
+
+    p {
+      margin: 15px;
+    }
   }
 
   h2 {

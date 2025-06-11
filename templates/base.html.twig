@@ -19,7 +19,7 @@
             <header>
                 <nav>
                     <ul>
-                        <li><a id="logo" href="{{path('app_index')}}">MEMONOTE</a></li>
+                        <li><a id="logo" href="{{path('app_index')}}">REmemono</a></li>
                         <li><a href="{{path('app_addnote')}}">Ajouter une note</a></li>
                         {% if app.user %}
                             <li><a href="{{path('app_logout')}}">Déconnexion</a></li>  
@@ -41,6 +41,8 @@
         {% block footer %}
             <footer>
                 <p>&copy; 2025 B.Martinez</p>
+                <p>Powered by Symfony 6.4</p>
+                <a href="mailto:ben24france@gmail.com">Contact</a>
             </footer>
         {% endblock %}
     

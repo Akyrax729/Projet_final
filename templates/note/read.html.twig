@@ -17,8 +17,12 @@
             </div>
 
         <div id="date">
+            {% if note.datedebut != null %}
                 <p>Date de début : {{ note.datedebut|date('d/m/Y') }} </p>
+            {% endif %}
+            {% if note.datefin != null %}
                 <p>Date de fin : {{ note.datefin|date('d/m/Y') }} </p>
+            {% endif %}
                 <p> Créé le {{ note.createdAt|date('d/m/Y h:i') }} </p>
                 {% if note.modifiedAt != note.createdAt %}
                     <p> Dernière modification le {{ note.modifiedAt|date('d/m/Y h:i') }} </p>
