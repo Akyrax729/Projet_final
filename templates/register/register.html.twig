@@ -3,11 +3,14 @@
 {% block title %}S'enregistrer{% endblock %}
 
 {% block body %}
-    <section id="form">
-        {{form_start(registerform)}}
-            <h2>Inscription</h2>
-            {{form_widget(registerform)}}
-            <button>S'enregistrer</button>
-        {{form_end(registerform)}}
-    </section>
+    <main>
+        <section id="form">
+            {{form_start(registerform)}}
+                <h2>Inscription</h2>
+                {{form_widget(registerform)}}
+                <button>S'enregistrer</button>
+            {{form_end(registerform)}}
+        </section>
+        <span class="account">Vous avez déjà un compte ? <a class="click" href="{{ path('app_login') }}">Cliquez ici</a> pour vous connecter.</span>
+    </main>
 {% endblock %}

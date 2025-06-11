@@ -1,6 +1,17 @@
 @use "../abstract/mixins" as mixin;
 @use "../abstract/variables" as var;
 
+
+.click {
+    display: inline;
+}
+
+.account {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
 #form {
     @include mixin.flex(column, $wrap: wrap);
     margin: 0 5%;
@@ -17,6 +28,14 @@
     div {
         @include mixin.flex(column, $wrap: wrap); 
     }
+
+    .checkbox {
+        @include mixin.flex();
+
+        margin-top: 5px;
+        input {display: inline-block;}
+        label {display: inline-block; margin-right: 5px;}
+    }   
 
     #note_type_form {
         width: 100%;

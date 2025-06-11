@@ -3,11 +3,13 @@
 {% block title %}Éditer une note{% endblock %}
 
 {% block body %}
-    <section id="form">
-        {{form_start(noteform)}}
-            <h2>Modification de votre mémo / note</h2>
-            {{form_widget(noteform)}}
-            <button>Mettre à jour</button>
-        {{form_end(noteform)}}
-    </section>
+    <main>
+        <section id="form">
+            {{form_start(noteform)}}
+                <h2>Modification de votre mémo / note</h2>
+                {{form_widget(noteform)}}
+                <button>Mettre à jour</button>
+            {{form_end(noteform)}}
+        </section>
+    </main>
 {% endblock %}
