@@ -8,17 +8,6 @@
 
 {% block body %}
     <main>
-        <section id="filter">
-            <section id="form">
-                {{form_start(filterForm)}} 
-                    {{form_widget(filterForm)}}
-                    <button>Filtrer</button>
-                {{form_end(filterForm)}}
-            </section>
-        </section>
-        <section id="results">
-            {# {% include 'partial/note.html.twig' %} #}
-        </section>
         <section id="note">
             {% if app.user %}
                 <h2>Bonjour {{ app.user.alias }}</h2>

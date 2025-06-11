@@ -25,12 +25,6 @@ class Note
     #[ORM\Column]
     private ?\DateTimeImmutable $modifiedAt = null;
 
-    /**
-     * @var Collection<int, User>
-     */
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'note')]
-    private Collection $users;
-
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $datedebut = null;
 
@@ -46,13 +40,15 @@ class Note
     /**
      * @var Collection<int, Tag>
      */
-    #[ORM\ManyToMany(targetEntity: Tag::class, mappedBy: 'note')]
-    private Collection $tags;
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'notes')]
+    private Collection $tag;
+
+    #[ORM\ManyToOne(inversedBy: 'notes')]
+    private ?User $user = null;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
-        $this->tags = new ArrayCollection();
+        $this->tag = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,33 +88,6 @@ class Note
     public function setModifiedAt(\DateTimeImmutable $modifiedAt): static
     {
         $this->modifiedAt = $modifiedAt;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): static
-    {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-            $user->addNote($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): static
-    {
-        if ($this->users->removeElement($user)) {
-            $user->removeNote($this);
-        }
 
         return $this;
     }
@@ -174,16 +143,15 @@ class Note
     /**
      * @return Collection<int, Tag>
      */
-    public function getTags(): Collection
+    public function getTag(): Collection
     {
-        return $this->tags;
+        return $this->tag;
     }
 
     public function addTag(Tag $tag): static
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags->add($tag);
-            $tag->addNote($this);
+        if (!$this->tag->contains($tag)) {
+            $this->tag->add($tag);
         }
 
         return $this;
@@ -191,9 +159,19 @@ class Note
 
     public function removeTag(Tag $tag): static
     {
-        if ($this->tags->removeElement($tag)) {
-            $tag->removeNote($this);
-        }
+        $this->tag->removeElement($tag);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

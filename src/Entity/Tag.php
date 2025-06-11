@@ -21,12 +21,12 @@ class Tag
     /**
      * @var Collection<int, Note>
      */
-    #[ORM\ManyToMany(targetEntity: Note::class, inversedBy: 'tags')]
-    private Collection $note;
+    #[ORM\ManyToMany(targetEntity: Note::class, mappedBy: 'tag')]
+    private Collection $notes;
 
     public function __construct()
     {
-        $this->note = new ArrayCollection();
+        $this->notes = new ArrayCollection();
     }
     
     public function getId(): ?int
@@ -49,15 +49,16 @@ class Tag
     /**
      * @return Collection<int, Note>
      */
-    public function getNote(): Collection
+    public function getNotes(): Collection
     {
-        return $this->note;
+        return $this->notes;
     }
 
     public function addNote(Note $note): static
     {
-        if (!$this->note->contains($note)) {
-            $this->note->add($note);
+        if (!$this->notes->contains($note)) {
+            $this->notes->add($note);
+            $note->addTag($this);
         }
 
         return $this;
@@ -65,7 +66,9 @@ class Tag
 
     public function removeNote(Note $note): static
     {
-        $this->note->removeElement($note);
+        if ($this->notes->removeElement($note)) {
+            $note->removeTag($this);
+        }
 
         return $this;
     }

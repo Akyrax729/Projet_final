@@ -22,20 +22,9 @@ class NoteRepository extends ServiceEntityRepository
        public function userFilter($value): array
        {
            return $this->createQueryBuilder('n')
-                ->innerJoin('n.users', 'u')
+                ->leftJoin('n.user', 'u')
                 ->andWhere('u.id = :id')
                 ->setParameter('id', $value)
-                ->getQuery()
-                ->getResult()
-           ;
-       }
-
-       public function filterTags($value): array
-       {
-           return $this->createQueryBuilder('n')
-                ->innerJoin('n.tag', 't')
-                ->andWhere('t.label = :label')
-                ->setParameter('label', $value)
                 ->getQuery()
                 ->getResult()
            ;

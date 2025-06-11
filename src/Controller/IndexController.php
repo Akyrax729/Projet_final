@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 final class IndexController extends AbstractController
 {
     #[Route('/', name: 'app_index')]
-    public function index(NoteRepository $noteRepository, Request $request): Response
+    public function index(NoteRepository $noteRepository): Response
     {
         $user = $this->getUser();
 
@@ -21,26 +21,10 @@ final class IndexController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $form = $this->createForm(FilterForm::class);
-
-        $form->handleRequest($request);
-        $note = $request->get('tag', 'all');
-
-        if ($form->isSubmitted()&&$form->isValid()){
-
-            // $note = $form->get('tag')->getData();
-            // $note = $note->getLabel();           
-
-            // $notes = $noteRepository->filterTags($note);
-
-
-        } else {
-            $notes = $noteRepository->findAll();
-        };
+        $notes = $noteRepository->userFilter($user);
 
         return $this->render('index/index.html.twig', [
             'notes' => $notes,
-            'filterForm'=>$form->createView(),
         ]);
     }
 }

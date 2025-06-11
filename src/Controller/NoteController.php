@@ -24,10 +24,11 @@ final class NoteController extends AbstractController
 
         $getUser = $this->getUser();
 
+
         if ($form->isSubmitted() && $form->isValid()) {
             $note->setCreatedAt(new \DateTimeImmutable());
             $note->setModifiedAt(new \DateTimeImmutable());
-            $note->addUser($getUser);
+            $note->setUser($getUser);
             $entityManager->persist($note);
             $entityManager->flush();
 
@@ -55,7 +56,7 @@ final class NoteController extends AbstractController
     {
 
         $get = $this->getUser();
-        if($get == $note->getUsers()){
+        if($get != $note->getUser()){
             $this->addFlash('error', 'Vous ne pouvez pas modifier cette note !');
             return $this->redirectToRoute('app_index');
         }
