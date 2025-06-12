@@ -72,7 +72,23 @@
         }
 
         input, textarea {
-            width: 200px;
+            width: 400px;
         }
     }
+}
+
+@media screen and (max-width: 480px) {
+    #form {
+        div {
+            width: 100%;;
+        }
+        
+        #note_type_form {
+            input, textarea {
+                // width: 200px;
+                width: 100%;
+            }
+        }
+    }
+    
 }
