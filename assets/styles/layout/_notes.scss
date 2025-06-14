@@ -53,7 +53,6 @@
             .action {
                 margin-top: 5px;
                 @include mixin.flex();
-                justify-self: flex-end;
 
                 li {
                     @include mixin.flex( $wrap: nowrap);
