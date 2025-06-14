@@ -4,9 +4,15 @@
 #read {
     @include mixin.flex(column, $wrap: wrap);
     margin: 25px 5%;
+    min-width: 80%;
 
     .notebody {
+        @include mixin.flex(column, $wrap: wrap);
+        width: 100%;
         padding: 15px;
+        box-shadow: -0.5px 1px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+        border: 1px solid #BABABA
     }
 
     h2 {
@@ -14,10 +20,27 @@
         margin-bottom: 20px;
     }
 
-    .datedebut {
+    .tags {
+        @include mixin.flex(row, $wrap: wrap);
+        margin-bottom: 15px;
+        margin-top: 30px;
+    }
+
+    #date {
+        @include mixin.flex(column,$align: flex-start, $wrap: nowrap);
+        margin: 15px 0;
+
+        span {
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .datedebut {
         margin-bottom: 5px;
         font-weight: 700;
+        }
     }
+    
 
     p {
         font-size: 16px;
@@ -28,6 +51,7 @@
 
     .action{    
         @include mixin.flex(row, $wrap: nowrap);
+        margin-top: 25px;
 
         li {
             margin: 0 10px;

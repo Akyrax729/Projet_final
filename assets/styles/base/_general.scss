@@ -17,7 +17,7 @@
   --background-color: #121212;
   --text-color: #e0e0e0;
   --link-color: #D9A25F;
-  --border-color: #cccccc;
+  --border-color: rgba(255, 255, 255, 0.15);
   --hover-color: #9471bf;
   --buttonbg-color: #ffffff;
   --button-color: #121212;
@@ -58,7 +58,8 @@ body {
   }
 
   main {
-    min-height: 80vh;
+    min-height: 85vh;
+    margin: 40px 0;
 
   }
 

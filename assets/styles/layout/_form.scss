@@ -15,6 +15,7 @@
 #form {
     @include mixin.flex(column, $wrap: wrap);
     margin: 0 5%;
+    margin-bottom: 100px;
 
     form {
         @include mixin.flex(column, $wrap: wrap);
@@ -62,6 +63,18 @@
                 height: 100px;
                 padding: 3px;
                 resize: none;
+            }
+        }
+        #note_type_form_public {
+            @include mixin.flex(row, $wrap: wrap);
+
+            label {
+                margin: 0px 5px;
+                margin-right: 10px;
+            }
+
+            input {
+                width: 10px;
             }
         }
 

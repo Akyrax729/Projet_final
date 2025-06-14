@@ -65,7 +65,7 @@ class NoteTypeForm extends AbstractType
                 'required' => true,
             ])  
             ->add('public', ChoiceType::class, [
-                'label' => 'Public',
+                'label' => 'Voulez-vous rendre cette note publique ?',
                 'choices' => [
                     'Oui' => 1,
                     'Non' => 0,
