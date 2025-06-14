@@ -34,8 +34,8 @@
 
         .notebody {
             @include mixin.flex(column, $wrap: wrap);
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             padding: 10px;
             margin: 15px;
             // box-shadow: 2px 2px 5px rgb(53, 53, 53);
