@@ -27,7 +27,7 @@ class NoteTypeForm extends AbstractType
                 ]
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'Contenu',
+                'label' => 'Contenu *',
                 'attr' => [
                     'placeholder' => 'Contenu de la note',
                 ]
@@ -65,7 +65,7 @@ class NoteTypeForm extends AbstractType
                 'required' => true,
             ])  
             ->add('public', ChoiceType::class, [
-                'label' => 'Voulez-vous rendre cette note publique ?',
+                'label' => 'Voulez-vous rendre cette note publique ? *',
                 'choices' => [
                     'Oui' => 1,
                     'Non' => 0,
