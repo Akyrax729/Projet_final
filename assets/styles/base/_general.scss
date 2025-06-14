@@ -143,9 +143,25 @@ body {
     text-transform: capitalize;
   }
 }
-
-@media screen and (max-width: 940px) {
+@media screen and (max-width: 1100px) {
   body {
+    nav ul {
+      li {
+        margin: 0 10px;
+      }
+      a {
+        font-size: 20px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  body {
+    header {
+      .logo-holder {
+        margin-right: 0;
+      }
+    }
     nav ul {
       @include mixin.flex($direction: column, $justify: center, $align: center);
       margin: 20px 0;

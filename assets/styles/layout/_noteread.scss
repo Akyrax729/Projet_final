@@ -2,9 +2,9 @@
 @use "../abstract/variables" as var;
 
 #read {
-    @include mixin.flex(column, $wrap: wrap);
+    @include mixin.flex($wrap: wrap);
     margin: 25px 5%;
-    min-width: 80%;
+    // min-width: 60%;
 
     .notebody {
         @include mixin.flex(column, $wrap: wrap);
@@ -56,6 +56,19 @@
         li {
             margin: 0 10px;
 
+        }
+    }
+}
+
+@media screen and (max-width: 560px) {
+    #read {
+        margin: 25px 0;
+        .notebody {
+            width: 100%;
+        }
+        .action {
+            @include mixin.flex(column, $wrap: wrap);
+            margin-top: 15px;
         }
     }
 }
