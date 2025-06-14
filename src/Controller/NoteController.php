@@ -59,7 +59,7 @@ final class NoteController extends AbstractController
         $get = $this->getUser();
         if($get != $note->getUser()){
             $this->addFlash('error', 'Vous ne pouvez pas modifier cette note !');
-            return $this->redirectToRoute('app_index');
+            return $this->redirectToRoute('app_note');
         }
         $form = $this->createForm(NoteTypeForm::class, $note);
         $form->handleRequest($request);
@@ -68,7 +68,7 @@ final class NoteController extends AbstractController
             $note->setModifiedAt(new \DateTimeImmutable());
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_note', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('note/update.html.twig', [

@@ -2,23 +2,23 @@
 @use "../abstract/variables" as var;
 
 [data-theme="light"] {
-  --background-color: #FEFBEA;
+  --background-color: #F5F1E6;
   --text-color: #000000;
-  --link-color: #1a73e8;
-  --border-color: #000000;
+  --link-color: #505050;
+  --border-color: lightcoral;
   --hover-color: #9471bf;
   --buttonbg-color: #121212;
   --button-color: #ffffff;
-  --hf-background-color: rgba(255, 214, 133, 0.345);
-  --logo-background-color: rgb(255, 255, 255);
+  --hf-background-color: #FDDDAF;
+  --logo-background-color: inherit;
 }
 
 [data-theme="dark"] {
   --background-color: #121212;
   --text-color: #e0e0e0;
-  --link-color: #bb86fc;
-  --border-color: #ffffff;
-  --hover-color: #388af5;
+  --link-color: #D9A25F;
+  --border-color: #cccccc;
+  --hover-color: #9471bf;
   --buttonbg-color: #ffffff;
   --button-color: #121212;
   --hf-background-color: rgba(255, 255, 255, 0.15);
@@ -54,6 +54,7 @@ body {
   header {
     background-color: var(--hf-background-color);
     padding: 5px 0;
+    border-bottom: 1px solid var(--border-color);
   }
 
   main {
@@ -64,6 +65,8 @@ body {
   footer {
     @include mixin.flex($wrap: wrap);
     background-color: var(--hf-background-color);
+    border-top: 1px solid var(--border-color);
+
 
     div {
       @include mixin.flex(column,$align: flex-start, $wrap: wrap);
@@ -96,7 +99,7 @@ body {
   a {
     color: var(--link-color);
 
-    @include mixin.hover($hcolor: var(--hover-color));
+    @include mixin.hover($hcolor: var(--hover-color, darkslategray));
   }
 
   label {

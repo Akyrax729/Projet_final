@@ -38,8 +38,10 @@
             height: 300px;
             padding: 10px;
             margin: 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
+            // box-shadow: 2px 2px 5px rgb(53, 53, 53);
+            box-shadow: -0.5px 1px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            border: 1px solid #BABABA
 
 
         }
@@ -106,4 +108,38 @@
         }
 
     }
+}
+
+#index {
+    #note {
+        #notebloc{
+            // margin: 0 10%;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: auto; 
+            align-items: center;
+        }       
+    }
+}
+
+@media screen and (max-width: 1024px) {
+   #index {
+        #note {
+            #notebloc {
+                grid-template-columns: auto auto;
+
+            }
+        }
+   } 
+}
+
+@media screen and (max-width: 700px) {
+   #index {
+        #note {
+            #notebloc {
+                grid-template-columns: auto;
+
+            }
+        }
+   } 
 }
