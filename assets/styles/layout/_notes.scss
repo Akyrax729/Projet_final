@@ -48,6 +48,7 @@
 
         .notefooter {
 
+            @include mixin.flex(column);
             margin-top: auto;
 
             .action {
