@@ -7,8 +7,8 @@
   --link-color: #505050;
   --border-color: rgb(255, 208, 208);
   --hover-color: #9471bf;
-  --buttonbg-color: #121212;
-  --button-color: #ffffff;
+  --buttonbg-color: #fff;
+  --button-color: #000000;
   --hf-background-color: #FDDDAF;
   --logo-background-color: inherit;
   --form-background-color: #FDDDAF;
@@ -126,7 +126,7 @@ body {
     margin: 5px 0;
     // margin-top: 15px;
     padding: 0.3rem 1rem;
-    border: black solid 1px;
+    border: #BABABA solid 1px;
     border-radius: 5px;
     color: var(--button-color);
     background-color: var(--buttonbg-color);
