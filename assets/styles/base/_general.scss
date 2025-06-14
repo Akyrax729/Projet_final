@@ -2,25 +2,28 @@
 @use "../abstract/variables" as var;
 
 [data-theme="light"] {
-  --background-color: #FEFBEA;;
+  --background-color: #FEFBEA;
   --text-color: #000000;
   --link-color: #1a73e8;
-  --border-color: #3b3b3b;
+  --border-color: #000000;
   --hover-color: #9471bf;
   --buttonbg-color: #121212;
   --button-color: #ffffff;
-  --header-background-color: rgba(255, 214, 133, 0.345);
+  --hf-background-color: rgba(255, 214, 133, 0.345);
+  --logo-background-color: rgb(255, 255, 255);
 }
 
 [data-theme="dark"] {
   --background-color: #121212;
   --text-color: #e0e0e0;
   --link-color: #bb86fc;
-  --border-color: #b0b0b0;
+  --border-color: #ffffff;
   --hover-color: #388af5;
   --buttonbg-color: #ffffff;
   --button-color: #121212;
-  --header-background-color: rgba(255, 255, 255, 0.15);
+  --hf-background-color: rgba(255, 255, 255, 0.15);
+  --logo-background-color: rgb(255, 255, 255);
+
 }
 
 
@@ -32,13 +35,25 @@ body {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 
   #logo {
+    @include mixin.flex();
     font-size: 38px;
+    
     color: var(--text-color);
+
+    img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      background-color: var(--logo-background-color);
+      padding: 0.2rem;
+      padding-top: 0.1rem;
+      border-radius: 10px;
+    }
   }
 
   header {
-    background-color: var(--header-background-color);
-    padding: 1rem 0;
+    background-color: var(--hf-background-color);
+    padding: 5px 0;
   }
 
   main {
@@ -48,24 +63,34 @@ body {
 
   footer {
     @include mixin.flex($wrap: wrap);
+    background-color: var(--hf-background-color);
 
-    p {
+    div {
+      @include mixin.flex(column,$align: flex-start, $wrap: wrap);
+
       margin: 15px;
+
+      a, p {
+        margin: 10px 0;
+      }
     }
   }
 
   h2 {
     margin-top: 30px;
     text-align: center;
+    text-transform: capitalize;
   }
 
   nav ul {
     @include mixin.flex($direction: row, $justify: space-between, $align: center);
-    margin: 20px 5%;
+    margin: 0 5%;
 
     a {
-      font-size: 28px;
+      font-size: 22px;
     }
+
+    button {margin-top: 5px;}
   }
   
   a {
@@ -74,14 +99,21 @@ body {
     @include mixin.hover($hcolor: var(--hover-color));
   }
 
+  label {
+    text-transform: capitalize
+  }
+
   // Tous les boutons
+  .btn {
+    @include mixin.flex();
+  }
   button, .action li a {
-    @include mixin.hover(var(--button-color));
+    @include mixin.hover(var(--button-color), var(--hover-color));
     margin: 5px 0;
-    margin-top: 15px;
+    // margin-top: 15px;
     padding: 0.3rem 1rem;
     border: black solid 1px;
-    border-radius: 20px;
+    border-radius: 5px;
     color: var(--button-color);
     background-color: var(--buttonbg-color);
     cursor: pointer;
@@ -92,7 +124,7 @@ body {
   }
 
   .action li .fa-xmark{
-    font-size: 15px;
+    font-size: 18px;
   }
 }
 

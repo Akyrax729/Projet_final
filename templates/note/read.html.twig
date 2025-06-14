@@ -31,8 +31,10 @@
 
             <ul class="action">
                 <li><a href="{{ path('app_index') }}"><i class="fa-solid fa-arrow-left"></i><span> Retour</span></a></li>
-                <li><a href="{{ path('app_note_edit', {'id': note.id}) }}"><i class="fa-solid fa-pen"></i><span> Modifier</span></a></li>
-                <li> {{ include('note/deleteform.html.twig') }} </li>
+                {% if app.user == note.user %}
+                    <li><a href="{{ path('app_note_edit', {'id': note.id}) }}"><i class="fa-solid fa-pen"></i><span> Modifier</span></a></li>
+                    <li> {{ include('note/deleteform.html.twig') }} </li>
+                {% endif %}
             </ul>
         </div>
     </section>

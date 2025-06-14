@@ -1,0 +1,29 @@
+@use "../abstract/mixins" as mixin;
+@use "../abstract/variables" as var;
+
+#intro {
+    @include mixin.flex(column, center, center, wrap);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 50px 20%;
+    font-size: 20px;
+    text-align: center;
+
+    h2 {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-bottom: 30px;
+        font-size: 18px;
+        text-align: justify;
+    }
+}
+
+@media (max-width: 860px) {
+    #intro {
+        margin: 10%;
+
+    }
+}

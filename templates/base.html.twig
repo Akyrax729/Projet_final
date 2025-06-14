@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Rememono{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="icon" href="{{ asset('img/rememono-logo.png') }}" type="image/x-icon">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -19,9 +19,10 @@
             <header>
                 <nav>
                     <ul>
-                        <li><a id="logo" href="{{path('app_index')}}">Rememono</a></li>
-                        <li><a href="{{path('app_addnote')}}">Ajouter une note</a></li>
+                        <li><a id="logo" href="{{path('app_index')}}"><img src="{{ asset('img/rememono-logo.png') }}" alt="Logo">Rememono</a></li>
                         {% if app.user %}
+                            <li><a href="{{path('app_note')}}">Vos Notes</a></li>
+                            <li><a href="{{path('app_addnote')}}">Ajouter une note</a></li>
                             <li><a href="{{path('app_logout')}}">Déconnexion</a></li>  
                         {% else %}
                             <li><a href="{{path('app_login')}}">Connexion</a></li>
@@ -40,9 +41,14 @@
 
         {% block footer %}
             <footer>
-                <p>&copy; 2025 B.Martinez</p>
-                <p>Powered by Symfony 6.4</p>
-                <p>benpro@jld-i.com</p>
+                <div class="contact">
+                    <a href="#intro">A propos de nous</a>
+                    <p>benpro@jld-i.com</p>
+                </div>
+                <div class="legal">
+                    <p>&copy; 2025 B.Martinez</p>
+                    <p>Powered by Symfony 6.4</p>
+                </div>
             </footer>
         {% endblock %}
     

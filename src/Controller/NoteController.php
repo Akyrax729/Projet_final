@@ -11,9 +11,9 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[IsGranted('ROLE_USER')]
 final class NoteController extends AbstractController
 {
+    #[IsGranted('ROLE_USER')]
     #[Route('/addnote', name: 'app_addnote')]
     public function index(EntityManagerInterface $entityManager, Request $request): Response
     {
@@ -34,7 +34,7 @@ final class NoteController extends AbstractController
 
             $this->addFlash('success', 'Note ajoutée avec succès !');
 
-            return $this->redirectToRoute('app_index');
+            return $this->redirectToRoute('app_note');
         }
 
         return $this->render('note/add.html.twig', [
@@ -51,6 +51,7 @@ final class NoteController extends AbstractController
             ]);
         }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/{id}/edit', name: 'app_note_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Note $note, EntityManagerInterface $entityManager): Response
     {
@@ -76,6 +77,7 @@ final class NoteController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/note/{id}/delete', name: 'app_note_delete')]
     public function delete(Note $note, Request $request, EntityManagerInterface $entityManager): Response
     {

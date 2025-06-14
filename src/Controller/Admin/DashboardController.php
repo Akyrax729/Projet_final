@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Tag;
+use App\Entity\Note;
 use App\Entity\User;
 use App\Entity\Color;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,6 +52,6 @@ class DashboardController extends AbstractDashboardController
         // yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linktoCrud('Gestion des Utilisateurs', 'fa-solid fa-person', User::class);
         yield MenuItem::linktoCrud('Gestion des tags', 'fa-solid fa-tags', Tag::class);
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::linkToCrud('Notes', 'fas fa-list', Note::class);
     }
 }

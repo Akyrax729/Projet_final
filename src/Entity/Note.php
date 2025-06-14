@@ -46,6 +46,9 @@ class Note
     #[ORM\ManyToOne(inversedBy: 'notes')]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $public = null;
+
     public function __construct()
     {
         $this->tag = new ArrayCollection();
@@ -172,6 +175,18 @@ class Note
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPublic(): ?string
+    {
+        return $this->public;
+    }
+
+    public function setPublic(string $public): static
+    {
+        $this->public = $public;
 
         return $this;
     }

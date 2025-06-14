@@ -14,6 +14,7 @@
 
             h3 {
                 text-align: center;
+                text-transform: capitalize;
                 font-size: 26px;
                 margin-bottom: 10px;
             }
@@ -37,44 +38,34 @@
             height: 300px;
             padding: 10px;
             margin: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
 
-    }
 
-    .notefooter {
+        }
 
-        margin-top: auto;
+        .notefooter {
 
-        .action {
-            margin-top: 5px;
-            @include mixin.flex();
-            justify-self: flex-end;
+            margin-top: auto;
 
-            li {
-                @include mixin.flex( $wrap: nowrap);
-                margin: 5px;
-                position: relative;
-               
+            .action {
+                margin-top: 5px;
+                @include mixin.flex();
+                justify-self: flex-end;
 
-                span {
-                    position: absolute;
-                    transition: all 300ms;
-                    width: 0px;
-                    overflow: hidden;
-                }
-
-                // &:hover {
-                //     width: fit-content;
-                // }
-                // a:hover span {
-                //     width: 100%;
-                //     position:initial;
-                // }
-    }
-
-        
-               
-
+                li {
+                    @include mixin.flex( $wrap: nowrap);
+                    margin: 5px;
+                    position: relative;
                 
+
+                    span {
+                        position: absolute;
+                        transition: all 300ms;
+                        width: 0px;
+                        overflow: hidden;
+                    }
+                }             
             }
         }
     }
@@ -95,7 +86,7 @@
             padding-left: 4px;
             margin: 5px 0;
             margin-right: 20px;
-            
+            text-transform: capitalize;
             background-color: darkslategrey;
             color : white;
             

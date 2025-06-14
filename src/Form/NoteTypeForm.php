@@ -64,6 +64,15 @@ class NoteTypeForm extends AbstractType
                 'placeholder' => 'Sélectionnez une couleur',
                 'required' => true,
             ])  
+            ->add('public', ChoiceType::class, [
+                'label' => 'Public',
+                'choices' => [
+                    'Oui' => 1,
+                    'Non' => 0,
+                ],
+                'expanded' => true,
+                'multiple' => false,
+            ])
         ;
     }
 

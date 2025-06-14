@@ -73,6 +73,9 @@
 
         input, textarea {
             width: 400px;
+            height: 25px;
+            padding: 5px;
+            border-radius: 5px;
         }
     }
 }
@@ -85,7 +88,6 @@
         
         #note_type_form {
             input, textarea {
-                // width: 200px;
                 width: 100%;
             }
         }

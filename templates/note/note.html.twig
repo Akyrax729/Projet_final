@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de vos notes{% endblock %}
+
+{% block body %}
+    <main>
+        <section id="note">
+            {% if app.user %}
+                <h2>Bonjour {{ app.user.alias }}</h2>
+                <div id="notebloc">
+                {% for note in notes %}
+                        <div class="notebody {{ note.color.label }} ">
+
+                            <div class="text">
+                                <h3>{{ note.titre }}</h3>
+                                {% if note.datedebut != null %}
+                                    <p class="datedebut">Date de début : {{ note.datedebut|date('d/m/Y') }}</p>
+                                {% endif %}
+                                <p>{{ note.content|slice(0, 150)}}</p>
+                                
+                            </div>
+                    
+                            <div class="notefooter"> 
+                                <div class="tags">
+                                    {% for tag in note.tag|slice(0, 5) %}
+                                            <div>
+                                                <span class="tag">{{ tag.label }}<span class="triangle"></span></span>
+                                            </div>
+                                    {% endfor %}
+                                </div>
+                                <ul class="action">
+                                    <li><a href="{{ path('app_note_read', {'id': note.id})}}"><i class="fa-solid fa-magnifying-glass"></i> <span class="plus"></span> </a></li>
+                                    <li><a href="{{ path('app_note_edit', {'id': note.id}) }}"><i class="fa-solid fa-pen"></i> <span class="modifier"></span></a></li>
+                                    <li> {{ include('note/deleteform.html.twig') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </section>
+        
+    </main>
+{% endblock %}
+
+
+
+{# 
+
+Réduire la taille du header //
+
+gonfler la taille du footer avec plus d'infos
+note aléatoire partagée sur l'index
+phrase d'intro
+blinder l'index avec des infos
+Form note => public ou non
+agrandir les inputs (voir fomulaire d'autre site) => rendre plus aéré 
+Logo !! favicon !! 
+
+Note => petit border-radius avec coin plissé en haut à droite/gauche
+enriched toobar
+
+
+ #}
