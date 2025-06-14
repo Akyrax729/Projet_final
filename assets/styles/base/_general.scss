@@ -11,6 +11,7 @@
   --button-color: #ffffff;
   --hf-background-color: #FDDDAF;
   --logo-background-color: inherit;
+  --form-background-color: #FDDDAF;
 }
 
 [data-theme="dark"] {
@@ -23,7 +24,7 @@
   --button-color: #121212;
   --hf-background-color: rgba(255, 255, 255, 0.15);
   --logo-background-color: rgb(255, 255, 255);
-
+  --form-background-color: #eae6e528;
 }
 
 
@@ -37,7 +38,6 @@ body {
   #logo {
     @include mixin.flex();
     font-size: 38px;
-    
     color: var(--text-color);
 
     img {
@@ -55,6 +55,16 @@ body {
     background-color: var(--hf-background-color);
     padding: 5px 0;
     border-bottom: 1px solid var(--border-color);
+    width: 100%;
+
+    .logo {
+      margin-right: auto;
+    }
+
+    li {
+      margin: 0 20px;
+      width: auto;
+    }
   }
 
   main {
@@ -87,7 +97,7 @@ body {
   }
 
   nav ul {
-    @include mixin.flex($direction: row, $justify: space-between, $align: center);
+    @include mixin.flex($direction: row, $justify: flex-end, $align: center);
     margin: 0 5%;
 
     a {

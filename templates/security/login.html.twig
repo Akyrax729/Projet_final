@@ -16,19 +16,21 @@
             {% endif %}
 
             <section id="form">
-                <h2 class="h3 mb-3 font-weight-normal">Connectez-vous !</h2>
-                <label for="username">Email</label>
-                <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-                <label for="password">Password</label>
-                <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-                <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
-                <div class="checkbox">
-                    <label for="_remember_me">Remember me</label>
-                    <input type="checkbox" name="_remember_me" id="_remember_me">
+                <div class="login">
+                    <h2 class="h3 mb-3 font-weight-normal">Connectez-vous !</h2>
+                    <label for="username">Email</label>
+                    <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+                    <label for="password">Password</label>
+                    <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+                    <div class="checkbox">
+                        <label for="_remember_me">Remember me</label>
+                        <input type="checkbox" name="_remember_me" id="_remember_me">
+                    </div>
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        Se connecter
+                    </button>
                 </div>
-                <button class="btn btn-lg btn-primary" type="submit">
-                    Se connecter
-                </button>
             </section>
          
         </form>
