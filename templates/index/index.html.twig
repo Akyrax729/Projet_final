@@ -12,7 +12,7 @@
             </p>
         </section>
         <section id="note">
-        <h2>Quelques notes publiques aléatoires :</h2>
+            <h2>Quelques notes publiques aléatoires :</h2>
             <div id="notebloc">
                 {% for note in notes | slice(0,6) %}
                     <div class="notebody {{ note.color.label }} ">
@@ -44,7 +44,33 @@
                 {% endfor %}
             </div>
         </section>
-    
+        <section id="carrousel">
+            <h2>Témoignage</h2>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="slide">
+                        <p>Facile d'utilisation, très simple à prendre en main et efficace.</p>
+                    </div>
+                    <div class="slide">
+                        <p>J'adore mettre des Chuck Norris facts et pouvoir les partager.</p>
+                    </div>
+                    <div class="slide">
+                        <p>J'ai vu des informations utiles dans les notes aléatoires.</p>
+                    </div>
+                    <div class="slide">
+                        <p>Ce thème sombre est simplement parfait.</p>
+                    </div>
+                    <div class="slide">
+                        <p>Ces formulaires sont magnifiques.</p>
+                    </div>
+                </div>            
+                <div class="carousel-controls">
+                    <button id="prev"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="next"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
     </main>
 
 {% endblock %}

@@ -15,10 +15,7 @@ class NoteRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Note::class);
     }
-
-    //    /**
-    //     * @return Note[] Returns an array of Note objects
-    //     */
+    
        public function userFilter($value): array
        {
            return $this->createQueryBuilder('n')
@@ -34,7 +31,6 @@ class NoteRepository extends ServiceEntityRepository
        {
            return $this->createQueryBuilder('n')
                 ->andWhere('n.public = 1')
-                // ->setMaxResults(5)
                 ->getQuery()
                 ->getResult()
            ;

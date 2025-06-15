@@ -24,7 +24,6 @@ final class NoteController extends AbstractController
 
         $getUser = $this->getUser();
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             $note->setCreatedAt(new \DateTimeImmutable());
             $note->setModifiedAt(new \DateTimeImmutable());

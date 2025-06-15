@@ -7,28 +7,27 @@
             <h2> {{ note.titre }} </h2>
             <p> {{ note.content }} </p>
             
-
+            <div class="auteur">Auteur : {{ note.user.alias }} </div>
             <div class="tags">
                 {% for tag in note.tag %}
-                        <div>
-                            <span class="tag">{{ tag.label }}<span class="triangle"></span></span>
-                        </div>
+                    <div>
+                        <span class="tag">{{ tag.label }}<span class="triangle"></span></span>
+                    </div>
                 {% endfor %}
             </div>
 
-        <div id="date">
-            {% if note.datedebut != null %}
-                <p>Date de début : {{ note.datedebut|date('d/m/Y') }} </p>
-            {% endif %}
-            {% if note.datefin != null %}
-                <p>Date de fin : {{ note.datefin|date('d/m/Y') }} </p>
-            {% endif %}
-                <p> Créé le {{ note.createdAt|date('d/m/Y h:i') }} </p>
-                {% if note.modifiedAt != note.createdAt %}
-                    <p> Dernière modification le {{ note.modifiedAt|date('d/m/Y h:i') }} </p>
+            <div id="date">
+                {% if note.datedebut != null %}
+                    <p>Date de début : {{ note.datedebut|date('d/m/Y') }} </p>
                 {% endif %}
-        </div>
-
+                {% if note.datefin != null %}
+                    <p>Date de fin : {{ note.datefin|date('d/m/Y') }} </p>
+                {% endif %}
+                <p> Créé le {{ note.createdAt|date('d/m/Y H:i') }} </p>
+                {% if note.modifiedAt != note.createdAt %}
+                    <p> Dernière modification le {{ note.modifiedAt|date('d/m/Y H:i') }} </p>
+                {% endif %}
+            </div>
             <ul class="action">
                 <li><a href="{{ path('app_index') }}"><i class="fa-solid fa-arrow-left"></i><span> Retour</span></a></li>
                 {% if app.user == note.user %}

@@ -20,6 +20,10 @@
         margin-bottom: 20px;
     }
 
+    .auteur {
+        margin: 15px 0;
+    }
+
     .tags {
         @include mixin.flex(row, $wrap: wrap);
         margin-bottom: 15px;
